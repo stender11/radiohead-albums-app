@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiohead</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <section class="row">
+        <section class="column">
+            <h2>Input Album Data Here</h2>
+            <form action="/api" method="POST">
+                <input type="text" placeholder="dataName" name="name">
+                <input type="text" placeholder="album name" name="albumName">
+                <textarea type="text" placeholder="singles" name="singles" cols="35" rows="5"></textarea>
+                <input type="text" placeholder="yearReleased" name="yearReleased">
+                <input type="text" placeholder="length" name="length">
+                <input type="text" placeholder="album image URL" name="image">
+                <input type="text" placeholder="peak Chart Position in UK" name="peakChartPositionUK">
+                <button type="submit">Submit New Album</button>
+                <button type="button" id="updateButton">Update Existing Album</button>
+            </form>
+        </section>
+        <section class="column">
+            <h2>Delete Album Data Here</h2>
+            <input type="text" placeholder="album to delete" name="deleteInput" id="deleteInput">
+            <button id="deleteButton">DELETE</button>
+
+            <h2>Current Albums</h2>
+            <ul class="albums">
+                <% for(let i = 0; i < info.length; i++) {%>
+                    <li class="album">
+                        <span><%= info[i] %></span>
+                    </li>
+                <% } %>
+            </ul>
+            <h2>Get album info:</h2>
+            <select name="albumNames" id="albumNamesDrop">
+				<option value="pabloHoney" class="albumNameOption">Pablo Honey</option>
+				<option value="theBends" class="albumNameOption">The Bends</option>
+				<option value="okComputer" class="albumNameOption">Ok Computer</option>
+				<option value="kidA" class="albumNameOption">Kid A</option>
+				<option value="amnesiac" class="albumNameOption">Amnesiac</option>
+				<option value="hailToTheThief" class="albumNameOption">Hail to the Thief</option>
+				<option value="inRainbows" class="albumNameOption">In Rainbows</option>
+				<option value="theKingOfLimbs" class="albumNameOption">The King of Limbs</option>
+                <option value="aMoonShapedPool" class="albumNameOption">A Moon Shaped Pool</option>
+			</select>
+            <button type="button" id="getButton">Get Album Info</button>
+			<div class="albumImages">
+				<img src="" alt='image here' id="albumImage">
+			</div>
+            <ul class="album-data">
+				<li><span>Album name: </span><span id="albumName"></span></li>
+				<li><span>Year released: </span><span id="yearReleased"></span></li>
+				<li><span>Length: </span><span id="length"></span></li>
+				<li><span>Singles: </span><span id="singles"></span></li>
+				<li><span>Peak chart position (UK): </span><span id="peakChartPositionUK"></span></li>
+			</ul>
+        </section>
+    </section>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
